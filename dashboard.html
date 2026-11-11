@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard – Bloomrix</title>
+<script>(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})()</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="dist/output.css">
+<script src="src/js/app.js" defer></script>
+</head>
+<body data-page="dashboard" data-title="Dashboard">
+<div id="app-sidebar">
+</div>
+<div class="lg:pl-64">
+  <div id="app-topbar">
+  </div>
+<main id="main" class="mx-auto max-w-7xl space-y-8 p-4 sm:p-6 lg:p-8">
+  <div>
+    <h1 class="text-2xl font-bold sm:text-3xl">
+      Good morning, Usman
+    </h1>
+    <p class="muted mt-1">
+      Here is how your projects are doing this week.
+    </p>
+  </div>
+  <section aria-label="Statistics" class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+<article class="stat-card">
+  <div>
+    <p class="muted text-sm">
+      Total projects
+    </p>
+    <p class="mt-1 font-display text-3xl font-bold text-ink-900 dark:text-white" data-stat="total">
+      12
+    </p>
+  </div>
+  <span class="rounded-lg bg-brand-50 p-2.5 text-brand-700 dark:bg-brand-900 dark:text-brand-200">
+    <i data-icon="folder"></i>
+  </span>
+</article>
+<article class="stat-card">
+  <div>
+    <p class="muted text-sm">
+      Active projects</p>
+      <p class="mt-1 font-display text-3xl font-bold text-ink-900 dark:text-white" data-stat="active">
+        5
+      </p>
+    </div>
+    <span class="rounded-lg bg-brand-50 p-2.5 text-brand-700 dark:bg-brand-900 dark:text-brand-200">
+      <i data-icon="bolt"></i>
+    </span>
+  </article>
+<article class="stat-card">
+  <div>
+    <p class="muted text-sm">
+      Completed tasks
+    </p>
+    <p class="mt-1 font-display text-3xl font-bold text-ink-900 dark:text-white" >
+      148
+    </p>
+  </div>
+  <span class="rounded-lg bg-brand-50 p-2.5 text-brand-700 dark:bg-brand-900 dark:text-brand-200">
+    <i data-icon="check">
+    </i>
+  </span>
+</article>
+<article class="stat-card">
+  <div>
+    <p class="muted text-sm">
+      Pending tasks
+    </p>
+    <p class="mt-1 font-display text-3xl font-bold text-ink-900 dark:text-white" >
+      37
+    </p>
+  </div>
+  <span class="rounded-lg bg-brand-50 p-2.5 text-brand-700 dark:bg-brand-900 dark:text-brand-200">
+    <i data-icon="clock">
+    </i>
+  </span>
+</article>
+</section>
+  <div class="grid gap-8 xl:grid-cols-3">
+    <section id="projects" class="card min-w-0 p-0 xl:col-span-2" aria-labelledby="proj-h">
+      <div class="flex flex-col gap-3 p-5 sm:flex-row sm:items-center sm:justify-between">
+        <h2 id="proj-h" class="text-lg font-semibold">
+          Recent projects
+        </h2>
+        <div class="flex flex-col gap-2 sm:flex-row">
+          <div>
+            <label for="search" class="sr-only">
+              Search projects
+            </label>
+            <input id="search" type="search" class="input" placeholder="Search name or owner">
+          </div>
+          <div>
+            <label for="status-filter" class="sr-only">
+              Filter by status
+            </label>
+            <select id="status-filter" class="input">
+              <option value="all">
+                All statuses
+              </option>
+              <option>
+                Active
+              </option>
+              <option>
+                Completed
+              </option>
+              <option>
+                Pending
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full">
+        <thead class="border-y border-ink-100 bg-ink-50 dark:border-ink-700 dark:bg-ink-900/40">
+          <tr>
+            <th scope="col" class="th">
+              Project
+            </th>
+            <th scope="col" class="th hidden sm:table-cell">
+              Owner
+            </th>
+            <th scope="col" class="th">
+              Status
+            </th>
+            <th scope="col" class="th hidden md:table-cell">
+              Due
+            </th>
+            <th scope="col" class="th text-right">
+              Budget
+            </th>
+          </tr>
+        </thead>
+        <tbody id="project-rows" class="divide-y divide-ink-100 dark:divide-ink-700">
+        </tbody>
+      </table>
+    </div>
+      <div class="flex flex-col items-center justify-between gap-3 p-4 sm:flex-row">
+        <p id="result-count" class="muted text-sm" aria-live="polite">
+         </p>
+         <nav id="pager" aria-label="Pagination" class="flex flex-wrap justify-center gap-1.5">
+         </nav>
+        </div>
+    </section>
+    <section class="card" aria-labelledby="act-h">
+      <h2 id="act-h" class="text-lg font-semibold">
+        Recent activity
+      </h2>
+      <ol class="mt-2 divide-y divide-ink-100 dark:divide-ink-700">
+<li class="flex items-start gap-3 py-4">
+  <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-ink-100 text-xs font-bold text-ink-800 dark:bg-ink-700 dark:text-white">
+    AK
+  </span>
+  <div class="min-w-0 flex-1">
+    <p class="text-sm">
+      <span class="font-semibold text-ink-900 dark:text-white">
+        Amina Khan
+      </span>
+       completed “Approve homepage layout”
+      </p>
+      <p class="muted mt-0.5 text-xs">
+        <time>
+          10 minutes ago
+        </time>
+      </p>
+    </div>
+    <span class="badge-success">
+      Done
+    </span>
+  </li>
+<li class="flex items-start gap-3 py-4">
+  <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-ink-100 text-xs font-bold text-ink-800 dark:bg-ink-700 dark:text-white">
+    BA
+  </span>
+  <div class="min-w-0 flex-1">
+    <p class="text-sm">
+      <span class="font-semibold text-ink-900 dark:text-white">
+        Bilal Ahmed
+      </span>
+       moved “Billing integration” to review
+      </p>
+      <p class="muted mt-0.5 text-xs">
+        <time>
+          1 hour ago
+        </time>
+      </p>
+    </div>
+    <span class="badge-info">
+      In review
+    </span>
+  </li>
+<li class="flex items-start gap-3 py-4">
+  <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-ink-100 text-xs font-bold text-ink-800 dark:bg-ink-700 dark:text-white">
+    SM
+  </span>
+  <div class="min-w-0 flex-1">
+    <p class="text-sm">
+      <span class="font-semibold text-ink-900 dark:text-white">
+        Sara Malik
+      </span> 
+      uploaded 3 files to “Brand guidelines”
+    </p>
+    <p class="muted mt-0.5 text-xs">
+      <time>
+        3 hours ago
+      </time>
+    </p>
+  </div>
+  <span class="badge-success">
+    Done
+  </span>
+</li>
+<li class="flex items-start gap-3 py-4">
+  <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-ink-100 text-xs font-bold text-ink-800 dark:bg-ink-700 dark:text-white">
+    HA
+  </span>
+  <div class="min-w-0 flex-1">
+    <p class="text-sm">
+      <span class="font-semibold text-ink-900 dark:text-white">
+        Hamza Ali
+      </span>
+       is waiting on feedback for “Q4 marketing plan”
+      </p>
+      <p class="muted mt-0.5 text-xs">
+        <time>
+          Yesterday, 4:20 pm
+        </time>
+      </p>
+    </div>
+    <span class="badge-warning">
+      Pending
+    </span>
+  </li>
+<li class="flex items-start gap-3 py-4">
+  <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-ink-100 text-xs font-bold text-ink-800 dark:bg-ink-700 dark:text-white">
+    ZR
+  </span>
+  <div class="min-w-0 flex-1">
+    <p class="text-sm">
+      <span class="font-semibold text-ink-900 dark:text-white">
+        Zainab Raza
+      </span> 
+      commented on “Security audit”
+    </p>
+    <p class="muted mt-0.5 text-xs">
+      <time>
+        Yesterday, 11:05 am
+      </time>
+    </p>
+  </div>
+  <span class="badge-info">
+    Active
+  </span>
+</li>
+</ol>
+</section>
+</div>
+</main></div>
+</body></html>

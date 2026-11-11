@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Profile – Bloomrix</title>
+<script>(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})()</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="dist/output.css">
+<script src="src/js/app.js" defer></script>
+</head>
+<body data-page="profile" data-title="Profile">
+<div id="app-sidebar"></div>
+<div class="lg:pl-64">
+  <div id="app-topbar">
+  </div>
+<main id="main" class="mx-auto max-w-5xl space-y-8 p-4 sm:p-6 lg:p-8">
+  <div>
+    <h1 class="text-2xl font-bold sm:text-3xl">
+      Your profile
+    </h1>
+    <p class="muted mt-1">
+      Update your details, password and notifications.
+    </p>
+  </div>
+  <section class="card flex flex-col items-center gap-4 text-center sm:flex-row sm:text-left">
+    <div id="avatar" class="grid h-24 w-24 shrink-0 place-items-center overflow-hidden rounded-full bg-brand-700 font-display text-3xl font-bold text-white dark:bg-brand-400 dark:text-ink-950">
+      MU
+    </div>
+    <div class="flex-1">
+      <p id="display-name" class="text-xl font-semibold text-ink-900 dark:text-white">
+        Muhammad Usman
+      </p>
+      <p class="muted text-sm">
+        usmanmani78621@gmail.com
+      </p>
+      <span class="badge-brand mt-2">
+        Team plan
+      </span>
+    </div>
+    <div>
+      <label for="photo-input" class="btn-secondary cursor-pointer focus-within:ring-2">
+        Change photo
+      </label>
+      <input id="photo-input" type="file" accept="image/*" class="sr-only">
+    </div>
+  </section>
+  <div class="grid gap-8 lg:grid-cols-2">
+    <form id="info-form" class="card space-y-4" aria-labelledby="info-h">
+      <h2 id="info-h" class="text-lg font-semibold">
+        Personal information
+      </h2>
+      <div>
+        <label for="full-name" class="label">
+          Full name
+        </label>
+        <input id="full-name" class="input" value="Muhammad Usman" autocomplete="name">
+      </div>
+      <div><label for="email" class="label">
+        Email address
+      </label>
+      <input id="email" type="email" class="input" value="usmanmani78621@gmail.com" autocomplete="email">
+    </div>
+      <div>
+        <label for="phone" class="label">
+          Phone number
+        </label>
+        <input id="phone" type="tel" class="input" value="0315 5801236" autocomplete="tel">
+      </div>
+      <div>
+        <label for="location" class="label">
+          Location
+        </label>
+        <input id="location" class="input" value="Wah Cantt, Pakistan" autocomplete="address-level2">
+      </div>
+      <p id="info-msg" role="status" hidden>
+
+      </p>
+      <button class="btn-primary" type="submit">
+        Save changes
+      </button>
+    </form>
+    <form id="password-form" class="card space-y-4" aria-labelledby="pw-h" novalidate>
+      <h2 id="pw-h" class="text-lg font-semibold">
+        Change password
+      </h2>
+      <div><label for="current-pw" class="label">
+        Current password
+      </label>
+      <input id="current-pw" type="password" class="input" autocomplete="current-password">
+    </div>
+      <div>
+        <label for="new-pw" class="label">
+          New password
+        </label>
+        <input id="new-pw" type="password" class="input" autocomplete="new-password" aria-describedby="pw-hint">
+        <p id="pw-hint" class="muted mt-1 text-xs">
+          Use at least 8 characters.
+        </p>
+      </div>
+      <div>
+        <label for="confirm-pw" class="label">
+          Confirm new password
+        </label>
+        <input id="confirm-pw" type="password" class="input" autocomplete="new-password">
+      </div>
+      <p id="pw-msg" role="alert" hidden>
+
+      </p>
+      <button class="btn-primary" type="submit">
+        Update password
+      </button>
+    </form>
+  </div>
+  <form id="prefs-form" class="card" aria-labelledby="pref-h">
+    <h2 id="pref-h" class="text-lg font-semibold">
+      Notification preferences
+    </h2>
+    <ul class="mt-2 divide-y divide-ink-100 dark:divide-ink-700">
+<li class="flex items-center justify-between gap-4 py-3">
+  <div><p id="p1" class="text-sm font-medium text-ink-900 dark:text-white">
+    Overdue task alerts
+  </p>
+  <p class="muted text-xs">
+    Email me when a task passes its due date.
+  </p>
+</div>
+<button type="button" role="switch" data-pref aria-labelledby="p1" aria-checked="true" class="switch group">
+  <span class="switch-thumb">
+
+  </span>
+</button>
+</li>
+<li class="flex items-center justify-between gap-4 py-3">
+  <div>
+    <p id="p2" class="text-sm font-medium text-ink-900 dark:text-white">
+      Weekly progress digest
+    </p>
+    <p class="muted text-xs">
+      A Monday summary of all your projects.
+    </p>
+  </div>
+  <button type="button" role="switch" data-pref aria-labelledby="p2" aria-checked="true" class="switch group">
+    <span class="switch-thumb">
+
+    </span>
+  </button>
+</li>
+<li class="flex items-center justify-between gap-4 py-3">
+  <div>
+    <p id="p3" class="text-sm font-medium text-ink-900 dark:text-white">
+      Comments and mentions
+    </p>
+    <p class="muted text-xs">
+      Tell me when someone mentions me.
+    </p>
+  </div>
+  <button type="button" role="switch" data-pref aria-labelledby="p3" aria-checked="true" class="switch group">
+    <span class="switch-thumb">
+
+    </span>
+  </button>
+</li>
+<li class="flex items-center justify-between gap-4 py-3">
+  <div>
+    <p id="p4" class="text-sm font-medium text-ink-900 dark:text-white">
+      Product news
+    </p>
+    <p class="muted text-xs">
+      Occasional updates about new features.
+    </p>
+  </div>
+  <button type="button" role="switch" data-pref aria-labelledby="p4" aria-checked="false" class="switch group">
+    <span class="switch-thumb">
+
+    </span>
+  </button>
+</li>
+    </ul>
+    <p id="prefs-msg" role="status" hidden class="mb-4">
+
+    </p>
+    <button class="btn-primary mt-4" type="submit">
+      Save preferences
+    </button>
+  </form>
+</main>
+</div>
+</body>
+</html>

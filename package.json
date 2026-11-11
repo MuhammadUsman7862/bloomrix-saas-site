@@ -1,0 +1,14 @@
+{
+  "name": "bloomrix",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "tailwindcss -c tailwind.config.js -i src/input.css -o dist/output.css --minify",
+    "watch": "tailwindcss -c tailwind.config.js -i src/input.css -o dist/output.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "3.4.17"
+  },
+  "dependencies": {
+    "bootstrap": "^6.0.0-alpha.1"
+  }
+}
